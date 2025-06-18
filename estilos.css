@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Poppins:wght@300;600&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #d3d3d3;
+    color: #2e2e2e;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #e8e8e8; 
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin: 0 12px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #3e3e3e;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #c1c1c1; 
+    color: #fff;
+}
+
+section {
+    background-color: #c0c0c0; 
+    margin: 30px auto;
+    padding: 25px;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Lora', serif;
+    color: #3a3a3a;
+    margin-bottom: 15px;
+}
+
+nav ul {
+    text-align: center;
+    margin-top: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+nav ul li a {
+    background-color: #dedede;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+nav ul li a:hover {
+    background-color: #9b9b9b;
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #bcbcbc;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Lora', serif;
+}
+
+td {
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+tr:hover td {
+    background-color: #ececec;
+}
+
+a, button {
+    transition: all 0.3s ease;
+}
+
+a:hover, button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+p {
+    margin: 15px 0;
+    line-height: 1.6;
+    padding: 30px;
+}
+
+@media (max-width: 600px) {
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+    
+    section {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #9b9b9b;
+    color: white;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}

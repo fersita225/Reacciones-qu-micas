@@ -8,63 +8,65 @@
 </head>
 <body>
 
-<header>
-  <nav>
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="que es.html">¿Qué es una reacción química?</a></li>
-      <li><a href="presencia.html">Presencia de las reacciones químicas</a></li>
-      <li><a href="tipos.html">Tipos de reacciones químicas</a></li>
-      <li><a href="simbolo.html">Significado de los símbolos</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="que es.html">¿Qué es una reacción química?</a></li>
+        <li><a href="presencia.html">Presencia de las reacciones químicas</a></li>
+        <li><a href="tipos.html">Tipos de reacciones químicas</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-  <div class="form-container">
-    <h2>Formulario</h2>
-    <h5><p>Nos interesa saber tu opinón sobre la información compartida ya que de esta forma podremos saber si la información proporcionada es de ayuda para ti.</p></h5>
-    <form id="neonForm">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required>
+  <main>
+    <div class="form-container">
+      <h2>Formulario</h2>
+      <h5>Nos interesa saber tu opinón sobre la información compartida para saber si fue de ayuda para ti.</h5>
 
-      <label for="edad">Edad:</label>
-      <input type="number" id="edad" name="edad" required>
+      <form id="neonForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
 
-      <label for="nivel">Nivel de estudio:</label>
-      <select id="nivel" name="nivel" required>
-        <option value="">--Selecciona--</option>
-        <option value="Primaria">Primaria</option>
-        <option value="Secundaria">Secundaria</option>
-        <option value="Preparatoria">Preparatoria</option>
-        <option value="Universidad">Universidad</option>
-      </select>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" required>
 
-      <label for="correo">Correo electrónico:</label>
-      <input type="email" id="correo" name="correo" required>
+        <label for="nivel">Nivel de estudio:</label>
+        <select id="nivel" name="nivel" required>
+          <option value="">--Selecciona--</option>
+          <option value="Primaria">Primaria</option>
+          <option value="Secundaria">Secundaria</option>
+          <option value="Preparatoria">Preparatoria</option>
+          <option value="Universidad">Universidad</option>
+        </select>
 
-      <label for="mensaje">Mensaje:</label>
-      <h5><p>Aquí puedes expresar tu opinión respecto a la información presenta y si fue de tu agrado.</p></h5>
-      <textarea id="mensaje" name="mensaje" rows="3" required></textarea>
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
 
-      <label for="contacto">Número de contacto:</label>
-      <input type="tel" id="contacto" name="contacto" required>
+        <label for="mensaje">Mensaje:</label>
+        <h5>¿Qué opinas sobre la información presentada?</h5>
+        <textarea id="mensaje" name="mensaje" rows="3" required></textarea>
 
-      <label>Califica la información:</label>
-      <div class="rating" id="rating">
-        <span class="star" data-value="1">★</span>
-        <span class="star" data-value="2">★</span>
-        <span class="star" data-value="3">★</span>
-        <span class="star" data-value="4">★</span>
-        <span class="star" data-value="5">★</span>
-      </div>
+        <label for="contacto">Número de contacto:</label>
+        <input type="tel" id="contacto" name="contacto" required>
 
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
-</main>
+        <label>Califica la información:</label>
+        <div class="rating" id="rating">
+          <span class="star" data-value="1">★</span>
+          <span class="star" data-value="2">★</span>
+          <span class="star" data-value="3">★</span>
+          <span class="star" data-value="4">★</span>
+          <span class="star" data-value="5">★</span>
+        </div>
 
-<footer><p>© 2025 | Proyecto educativo | Fernanda A. G.</p></footer>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 | Proyecto educativo | Fernanda A. G.</p>
+  </footer>
 
   <script>
     const form = document.getElementById("neonForm");
@@ -94,7 +96,27 @@
         puntuacion: puntuacion
       };
 
-      localStorage.setItem("formularioNeon", JSON.stringify(datos));
+      // Crear y descargar archivo CSV
+      const encabezados = ["Nombre", "Edad", "Nivel", "Correo", "Mensaje", "Contacto", "Puntuación"];
+      const valores = [
+        datos.nombre,
+        datos.edad,
+        datos.nivel,
+        datos.correo,
+        datos.mensaje.replace(/\n/g, ' '),
+        datos.contacto,
+        datos.puntuacion
+      ];
+
+      const contenido = encabezados.join(",") + "\n" + valores.join(",");
+      const blob = new Blob([contenido], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "respuestas_formulario.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
       alert("¡Gracias por enviar tus datos! 🌟");
       form.reset();
